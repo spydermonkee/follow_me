@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'twitter'
 gem 'jbuilder', '~> 2.0'
+gem 'figaro'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
