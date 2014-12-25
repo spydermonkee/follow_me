@@ -21,11 +21,8 @@ group :development do
   gem 'spring'
 end
 
-group :test do
-  gem 'rspec'
-end
-
 group :development, :test do
+  gem 'rspec-rails'
   gem 'debugger'
   gem 'pry'
 end
