@@ -1,0 +1,53 @@
+<h1>The Best Follow Me Map Ever</h1>
+
+<input type="text" id="username"></input>
+<button id="loader">Load Tweets</button>
+
+<div id="map">
+</div>
+
+<script>
+
+$( "#loader" ).click(function() {
+    var username = $('#username').val()
+    loadTweets(username);
+});
+
+// Provide your access token
+L.mapbox.accessToken = 'pk.eyJ1IjoiZWhjIiwiYSI6InpRVUVnaVkifQ.YR49gsHwf8EPpNAU5FtPuQ';
+// Create a map in the div #map
+var map = L.mapbox.map('map', 'ehc.map-shm0r7pp');
+
+function loadTweets(username) {
+  $.getJSON(("/api/v1/users/" + username + "/posts"), function(data) {
+    jQuery.each(data, function (index, tweet) {
+
+     if (index == 0) {
+       map.setView(tweet.coordinates.coordinates.reverse(), 10)
+     }
+
+      L.mapbox.featureLayer({
+          // this feature is in the GeoJSON format: see geojson.org
+          // for the full specification
+          type: 'Feature',
+          geometry: {
+              type: 'Point',
+              // coordinates here are in longitude, latitude order because
+              // x, y is the standard for GeoJSON and many formats
+              coordinates: tweet.coordinates.coordinates
+          },
+          properties: {
+              title: tweet.text,
+              description: tweet.text,
+              // one can customize markers by adding simplestyle properties
+              // https://www.mapbox.com/guides/an-open-platform/#simplestyle
+              'marker-size': 'large',
+              'marker-color': '#BE9A6B',
+              'marker-symbol': 'cafe'
+          }
+      }).addTo(map);
+    });
+  });
+};
+
+</script>
