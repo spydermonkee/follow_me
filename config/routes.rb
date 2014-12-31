@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :user
+  resources :users
   scope "/api" do
     scope "/v1" do
       get 'users/:username/posts' => "users#posts", as: :user_posts
