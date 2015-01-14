@@ -3,7 +3,6 @@ $ ->
   window.map = L.mapbox.map('map', 'ehc.map-shm0r7pp')
   $( "#loader" ).click (event) ->
     if window.fLayers?
-      debugger
       $.each(window.fLayers, (_, feature) ->
         window.map.removeLayer(feature)
       )
