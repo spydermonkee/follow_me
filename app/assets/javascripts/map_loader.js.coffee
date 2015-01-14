@@ -1,9 +1,10 @@
 $ ->
   L.mapbox.accessToken = 'pk.eyJ1IjoiZWhjIiwiYSI6InpRVUVnaVkifQ.YR49gsHwf8EPpNAU5FtPuQ'
   window.map = L.mapbox.map('map', 'ehc.map-shm0r7pp')
-  $( "#loader" ).click ->
+  $( "#loader" ).click (event) ->
     username = $('#username').val()
     loadTweets(username)
+    event.preventDefault()
 
 
 loadTweets = (username) ->

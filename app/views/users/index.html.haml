@@ -1,4 +1,6 @@
 %h1 The Best Follow Me Map Ever
-%input#username{:type => "text"}
-%button#loader Load Tweets
+%form
+  %label{for: "username"} User to view
+  %input#username{type: "text"}
+  %button#loader{type: "submit"} Load Tweets
 #map
