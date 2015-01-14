@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'twitter'
 gem 'jbuilder', '~> 2.0'
+gem 'figaro'
+gem 'haml'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
@@ -20,11 +22,8 @@ group :development do
   gem 'spring'
 end
 
-group :test do
-  gem 'rspec'
-end
-
 group :development, :test do
+  gem 'rspec-rails'
   gem 'debugger'
   gem 'pry'
 end
